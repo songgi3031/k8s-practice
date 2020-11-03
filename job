@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: abnormal-end
+spec:
+  backoffLimit: 3 # 1. 3회까지 파드 생성 시도를 하겠다.
+  template:
+    spec:
+      containers:
+      - name: busybox
+        image: busybox:latest
+        command: ["sh", "-c", "sleep 5; exit 1"]  # 이 명령어 때문에 5초 내로 삭제된다. 그래서 3회 시도후 종료한다.
+      restartPolicy: Never
+~                             
