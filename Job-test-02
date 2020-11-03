@@ -6,11 +6,11 @@ spec:
   template:
     spec:
       containers:
-      - name: busybox 1
+      - name: busybox1
         image: busybox:1
         command: ["sh", "-c", "sleep 5; exit 0"]
-      - name: busybox 2
+      - name: busybox2
         image: busybox:2
         command: ["sh", "-c", "sleep 5; exit 1"]
       restartPolicy: Never
-   backoffLimit: 2
+  backoffLimit: 2
